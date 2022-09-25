@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    # 'django.contrib.sites',
     'django_extensions',
     'rest_framework',
     'drf_yasg2',
@@ -47,12 +47,13 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'allauth',
     'allauth.account',
+    # 'allauth.socialaccount',
     'mainapp'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
