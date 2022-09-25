@@ -4,9 +4,8 @@ services:
   postgres:
     image: postgres:latest
     container_name: postgres_mock_service
-#    volumes:
-#      - ./nds.sql:/docker-entrypoint-initdb.d/1-nds.sql
-#      - ./nds_book_to_author.sql:/docker-entrypoint-initdb.d/2-nds.sql
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
