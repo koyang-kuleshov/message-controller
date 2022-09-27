@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import PostMessage, GetStatus
+from .views import get_status, PostMessage
 
 urlpatterns = [
     path("post/message", PostMessage.as_view(), name="post-message"),
-    path("get/status", GetStatus.as_view(), name="get-status"),
+    path("get/status", get_status, name="get-status"),
     ]
 
