@@ -4,3 +4,4 @@ activate
 __pycache__/
 postgres-data/
 *.log
+env.dev
