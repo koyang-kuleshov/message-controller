@@ -3,8 +3,10 @@ version: '3.1'
 services:
   nginx:
     build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/mockservice/staticfiles
     ports:
-      - "1337:80"
+      - "8001:80"
     depends_on:
       - django-mock
 
@@ -13,6 +15,8 @@ services:
       context: ./django
       dockerfile: Dockerfile.prod
     command: gunicorn mockservice.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/mockservice/staticfiles
     expose:
       - 8000
     env_file:
@@ -30,3 +34,4 @@ services:
 
 volumes:
   postgres-data: {}
+  static_volume: {}

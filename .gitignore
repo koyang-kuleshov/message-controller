@@ -6,3 +6,4 @@ postgres-data/
 *.log
 env.dev
 env*.prod
+staticfiles/
