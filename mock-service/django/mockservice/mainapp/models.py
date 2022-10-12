@@ -7,6 +7,7 @@ from django.dispatch import receiver
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     id = models.BigAutoField(primary_key=True)
+    phone = models.CharField(blank=False, max_length=30, default="1234567890")
     body = models.TextField()
     created_at = models.DateTimeField(auto_now=True)
     number_of_message = models.IntegerField(
