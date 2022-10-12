@@ -13,13 +13,16 @@ class PostMessage(generics.CreateAPIView):
     serializer_class = MessageSerializer
 
     def post(self, request, *args, **kwargs):
+        request.data["user"] = request.user.id
         response = self.create(request, *args, **kwargs)
         percent = int(os.environ.get("PERCENT_OF_GOOD_RESPONSE"))
         if randint(1, 100) < percent:
             return Response({"message": ("Message added in queue with id "
                                          f"{response.data['id']}"),
                              "status": 202
-                             })
+                             },
+                            status=status.HTTP_202_ACCEPTED
+                            )
         return Response("Service unavailable",
                         status=status.HTTP_503_SERVICE_UNAVAILABLE
                         )
